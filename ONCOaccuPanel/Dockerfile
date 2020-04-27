@@ -67,3 +67,15 @@ RUN pip --no-cache-dir install pysam==0.9.0
 RUN pip3 install pysam==0.14.1
 
 RUN pip --no-cache-dir install pysam==0.7.6
+# RUN pip --no-cache-dir install pysam==0.8.0
+RUN add-apt-repository ppa:deadsnakes/ppa -y
+RUN apt-get update
+RUN apt-get install python3.6 -y
+RUN apt-get install curl
+RUN curl https://bootstrap.pypa.io/get-pip.py | python3.6
+RUN pip3.6 install pysam==0.14.1
+RUN pip3.6 install hgvs==1.5.0
+RUN pip3.6 install PyVCF==0.6.8
+
+ENV UTA_DB_URL postgresql://uta_admin:uta_admin@localhost/uta/uta_20180821
+ENV HGVS_SEQREPO_DIR /NGENEBIO/workflow-dependencies/HGVS/seq_repo/latest
